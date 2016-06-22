@@ -1,0 +1,37 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "volumes": [
+    {
+      "name": "packed-it-api",
+      "host": {
+        "sourcePath": "/var/app/current/packed-it-api"
+      }
+    }
+  ],
+  "containerDefinitions": [
+    {
+      "name": "packed-it-api",
+      "image": "packedit/packedit-api",
+      "essential": true,
+      "memory": 256,
+      "portMappings" : [
+        {
+          "hostPort" : 8080,
+          "containerPort" : 8080
+        }
+      ]
+    },
+    {
+      "name": "packed-it-webapp",
+      "image": "packedit/packed-it-webapp",
+      "essential": true,
+      "memory": 196,
+      "portMappings" : [
+        {
+          "hostPort" : 80,
+          "containerPort" : 3000
+        }
+      ]
+    }
+  ]
+}
